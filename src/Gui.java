@@ -12,6 +12,15 @@ public class Gui extends JFrame {
     private JTextField tf;
     private JCheckBox boldbox;
     private JCheckBox italicbox;
+    private Font pf;
+    private Font bf;
+    private Font itf;
+    private Font bif;
+    private JRadioButton prb;
+    private JRadioButton brb;
+    private JRadioButton irb;
+    private JRadioButton birb;
+    private ButtonGroup group;
 
     Font font = null;
 
@@ -35,8 +44,6 @@ public class Gui extends JFrame {
         add(boldbox);
         add(italicbox);
 
-        boldbox.setSelected(true);
-
 
         Icon a = new ImageIcon(getClass().getResource("a.png"));
         Icon b = new ImageIcon(getClass().getResource("b.jpg"));
@@ -44,6 +51,31 @@ public class Gui extends JFrame {
         custom = new JButton("Custom", a);
         custom.setRolloverIcon(b);
         add(custom);
+
+        prb = new JRadioButton("plain", true);
+        add(prb);
+        brb = new JRadioButton("bold", false);
+        add(brb);
+        irb = new JRadioButton("italic", false);
+        add(irb);
+        birb = new JRadioButton("bold and italic", false);
+        add(birb);
+
+        group = new ButtonGroup();
+        group.add(prb);
+        group.add(brb);
+        group.add(irb);
+        group.add(birb);
+
+        pf = new Font("Serif", Font.PLAIN, 14);
+        bf = new Font("Serif", Font.BOLD, 14);
+        itf = new Font("Serif", Font.ITALIC, 14);
+        bif = new Font("Serif", Font.BOLD + Font.ITALIC, 14);
+
+        tf.setFont(pf);
+
+
+
 
         HandlerClass handler = new HandlerClass();
         reg.addActionListener(handler);
@@ -70,7 +102,6 @@ public class Gui extends JFrame {
             JOptionPane.showMessageDialog(null, String.format("%s", event.getActionCommand()) );
         }
     }
-
     private class HandlerClass2 implements ItemListener {
         public void itemStateChanged(ItemEvent event) {
             if (boldbox.isSelected() && italicbox.isSelected()) {
@@ -82,9 +113,7 @@ public class Gui extends JFrame {
             } else {
                 font = new Font("Serif",Font.PLAIN, 14);
             }
-
             tf.setFont(font);
-
         }
     }
 }
