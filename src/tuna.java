@@ -14,48 +14,39 @@ public class tuna extends JFrame {
 
     private JPasswordField passwordField;
 
-    public tuna(){
+    public tuna() {
         super("The Tittle");
         setLayout(new FlowLayout());
-
         item1 = new JTextField(5);
         add(item1);
-
         item2 = new JTextField("Text Here");
         add(item2);
-
         item3 = new JTextField("uneditable");
         item3.setEditable(false);
         add(item3);
-
         passwordField = new JPasswordField("MyPass");
         add(passwordField);
-
         theHandler handler = new theHandler();
         item1.addActionListener(handler);
         item2.addActionListener(handler);
         item3.addActionListener(handler);
         passwordField.addActionListener(handler);
-
     }
 
-    private class theHandler implements ActionListener{
+    private class theHandler implements ActionListener {
+        public void actionPerformed(ActionEvent event) {
+            String string = "";
 
-        public void actionPerformed(ActionEvent event){
-            String string = "" ;
-
-            if(event.getSource() == item1)
-                string = String.format("field 1 : %s" , event.getActionCommand());
+            if (event.getSource() == item1)
+                string = String.format("field 1 : %s", event.getActionCommand());
             else if (event.getSource() == item2)
-                string = String.format("field 2 : %s" , event.getActionCommand());
+                string = String.format("field 2 : %s", event.getActionCommand());
             else if (event.getSource() == item3)
-                string = String.format("field 3 : %s" , event.getActionCommand());
+                string = String.format("field 3 : %s", event.getActionCommand());
             else if (event.getSource() == passwordField)
-                string = String.format("password field is : %s" , event.getActionCommand());
+                string = String.format("password field is : %s", event.getActionCommand());
 
             JOptionPane.showMessageDialog(null, string);
         }
     }
-
-
 }

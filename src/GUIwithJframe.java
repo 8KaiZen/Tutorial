@@ -16,17 +16,3 @@ public class GUIwithJframe extends JFrame {
 
 }
 
-//**Main Class
-//import  javax.swing.JOptionPane;
-//import javax.swing.JFrame;
-//
-//public class main {
-//
-//    public static void main (String[] argh){
-//        tuna bucky = new tuna();
-//        bucky.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        bucky.setSize(275 , 180);
-//        bucky.setVisible(true);
-//
-//    }
-//}

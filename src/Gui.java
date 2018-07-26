@@ -29,11 +29,13 @@ public class Gui extends JFrame {
     private JList leftList;
     private JList rightList;
     private JButton moveButton;
+    private JButton removeButton;
     private static String[] filename = {"b.jpg", "a.png"};
     private Icon[] pics = {new ImageIcon(getClass().getResource(filename[0])), new ImageIcon(getClass().getResource(filename[1]))};
     private static String[] colornames = {"black", "blue", "white", "red"};
     private static Color[] colors = {Color.BLACK, Color.BLUE, Color.WHITE, Color.RED};
     private static String[] foods = {"bacon", "wings", "ham", "beef", "morebacon"};
+
 
 
     public Gui() {
@@ -128,6 +130,7 @@ public class Gui extends JFrame {
         leftList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         add(new JScrollPane(leftList));
 
+
         moveButton = new JButton("Move -->");
         moveButton.addActionListener(
                 new ActionListener() {
@@ -138,6 +141,13 @@ public class Gui extends JFrame {
                 }
         );
         add(moveButton);
+
+        rightList = new JList();
+        rightList.setVisibleRowCount(foods.length);
+        rightList.setFixedCellWidth(100);
+        rightList.setFixedCellHeight(15);
+        rightList.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        add(new JScrollPane(rightList));
     }
 
     private class HandlerClass implements ActionListener {
